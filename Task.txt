@@ -1,0 +1,9 @@
+s|afokd|ads|5.0|,
+s|asfss|f|5.0|ok
+s|poiou|1|1.0|asfss,afokd
+c|rt2|t2|t1,poiou
+s|ok|aa|5.0|t5
+s|t4|t4|4.0|asfss
+c|t5|asd|6.0|,
+s|c2|asd|6.0|,
+s|t1|t1|1|t5

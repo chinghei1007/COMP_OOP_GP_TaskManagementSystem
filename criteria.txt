@@ -1,0 +1,11 @@
+
+IsPrimitive
+c4|name|contains|w
+c9|name|contains|c
+c2|duration|==|1
+c10|description|contains|water
+c11|duration|>|1
+c33|name|contains|fk
+c3|name|contains|t
+Noc9|name|does not contain|c
+c4c11|c4|name|contains|w|&&|c11|duration|>|1

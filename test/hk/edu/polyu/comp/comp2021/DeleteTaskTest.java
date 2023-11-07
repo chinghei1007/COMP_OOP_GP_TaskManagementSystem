@@ -39,12 +39,22 @@ public class DeleteTaskTest {
         DeleteTask.delTask(fileName,"tDTM");
 
         assertFalse(CreateTask.checkExist(fileName,"tDTM"));
+
     }
 
     @Test
     public void delTaskAndUpdatePrerequisites() {
         String fileName = "Task.txt";
         TextFile.appendfile(fileName,"s|tDTM|Description1|2|,");
-        TextFile.appendfile(fileName,"s|tDTM2|Description2|2|,");
+        TextFile.appendfile(fileName,"s|tDTM2|Description2|2|tDTM,t1");
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        DeleteTask.delTaskAndUpdatePrerequisites(fileName,"tDTM", "");
+        Print.printOneTask(fileName,"tDTM2");
+        DeleteTask.delTask("Task.txt","tDTM2");
+
+        String output = outputStream.toString().trim().replaceAll("\\R","\n");
+        String expected = ".";
+        assertEquals(expected,output);
     }
 }

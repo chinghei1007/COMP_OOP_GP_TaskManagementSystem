@@ -110,30 +110,25 @@ public class DeleteTask {
             while ((line = reader.readLine()) != null) {
                 content.add(line);
             }
-    
+
             reader.close();
-    
+
             int index = -1; // Task index
             for (int i = 0; i < content.size(); i++) {
                 String[] splitted = content.get(i).split("\\|");
-                if (splitted.length == 1){continue;}
+                if (splitted.length == 1) {
+                    continue;
+                }
                 String taskName = splitted[1];
                 if (taskName.equals(oldTaskName)) {
                     index = i;
                     break;
                 }
             }
-    
+
             if (index != -1) {
-                String[] splitted = content.get(index).split("\\|");
-                String prerequisite;
-                if (splitted.length == 4) {
-                    prerequisite = splitted[3];
-                } else {
-                    prerequisite = splitted[4];
-                }
                 content.remove(index);
-    
+
                 // Update prerequisite references
                 for (int i = 0; i < content.size(); i++) {
                     String[] taskSplit = content.get(i).split("\\|");
@@ -144,7 +139,12 @@ public class DeleteTask {
                             if (prerequisites.get(j).trim().equals(oldTaskName)) {
                                 prerequisites.set(j, newTaskName);
                             }
+                            if (prerequisites.get(j).isEmpty()){
+                                prerequisites.remove(j);
+                                j--;
+                            }
                         }
+                        //clear empty items
                         taskSplit[4] = prerequisites.isEmpty() ? "," : String.join(",", prerequisites);
                         content.set(i, String.join("|", taskSplit));
                     } else if (taskSplit.length == 4) {
@@ -152,7 +152,7 @@ public class DeleteTask {
                     }
                 }
             }
-    
+
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, false));
             for (String writeline : content) {
                 writer.write(writeline);

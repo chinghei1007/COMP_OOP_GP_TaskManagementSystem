@@ -62,7 +62,7 @@ public class Print {
                 if (data.length == 1){continue;}
                 if (data[0].equals("s")) {
                     continue;
-                } else if (data.length == 1) {continue;} // skip all the composite tasks
+                }
                 String[] criteria = new String[data.length - 4];
                 String task = data[1];
                 String description = data[2];
@@ -97,7 +97,7 @@ public class Print {
                 if (data.length == 1){continue;}
                 if (data[0].equals("c")) {
                     continue;
-                } else if (data.length == 1) {continue;} // skip all the composite tasks
+                }
                 String task = data[1];
                 String description = data[2];
                 float duration = Float.parseFloat(data[3]);
@@ -128,7 +128,7 @@ public class Print {
                 String tasktype = data[0];
                 if (tasktype.equals("c")) {
                     continue;
-                } else if (data.length == 1) {continue;}
+                }
                 String task = data[1];
                 if (tasktype.equals("s")) {
                     tasktype = "Simple ";
@@ -151,7 +151,7 @@ public class Print {
                 String tasktype = data[0];
                 if (tasktype.equals("s")) {
                     continue;
-                }  else if (data.length == 1) {continue;}
+                }
                 String task = data[1];
                 if (tasktype.equals("c")) {
                     tasktype = "Composite ";
@@ -175,7 +175,7 @@ public class Print {
                 String task = data[1];
                 if (tasktype.equals("s")) {
                     tasktype = "Simple ";
-                }  else if (data.length == 1) {continue;}
+                }
                 else {
                     tasktype = "Composite ";
                 }
@@ -196,8 +196,6 @@ public class Print {
                 String[] data = content.split("\\|");
                 if (data.length == 1){continue;}
                 if (data[0].equals("c")) {
-                    continue;
-                } else if (data.length == 1) {
                     continue;
                 }
                 // if (criticallength < 0) {continue;} //skip all the composite tasks //for soem
